@@ -1,7 +1,8 @@
-import Login from "./login/Login";
+import Login from "./auth/Login";
+import Registration from "./auth/Registration";
 
 
 export default {
-    //seller-dashboard
     LoginView: Login,
+    RegistrationView: Registration
 }

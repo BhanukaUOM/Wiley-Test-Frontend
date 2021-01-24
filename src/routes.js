@@ -7,7 +7,7 @@ const routes = [
     path: "/register",
     layout: DefaultLayout,
     exact: true,
-    component: views.LoginView,
+    component: views.RegistrationView,
   },
   {
     path: "/login",
@@ -16,11 +16,11 @@ const routes = [
     component: views.LoginView,
   },
 
-//   //should be last one
-//   {
-//     layout: DefaultLayout,
-//     component: Views.PageNotFoundView,
-//   },
+  //   //should be last one
+  //   {
+  //     layout: DefaultLayout,
+  //     component: Views.PageNotFoundView,
+  //   },
 ];
 
 export default routes;
