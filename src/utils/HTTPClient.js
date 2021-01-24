@@ -38,23 +38,7 @@ export const setAuth = async () => {
                 clearHTTPClient()
                 window.location = "/login";
             }
-            if (error.response && error.response.status === 500) {
-                let error = {
-                    status: 500,
-                    message: "Something went wrong, please contact your service provider"
-                }
-                NotificationManager.error(error.message || "Something went wrong..!", "Login Failed");
-
-                return Promise.reject(error);
-            }
-            if (error.response && error.response.status === 400) {
-                return Promise.reject(error);
-            }
             else {
-                let error = {
-                    status: 524,
-                    message: "Something went wrong..!"
-                }
                 return Promise.reject(error);
             }
         }

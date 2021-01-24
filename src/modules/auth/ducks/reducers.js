@@ -1,40 +1,75 @@
 import React from "react";
 import types from "./types";
 import { handleActions } from "redux-actions";
+import { initialStateModal } from "../../../utils/Constants";
 
 const initialState = {
-  product: {
-    product:null
+  signUp: {
+    ...initialStateModal
   },
+  login: {
+    ...initialStateModal
+  }
 };
 
 // Reducers from redux-actions
 export default handleActions(
   {
-    //---------------------GET PRODUCT -------------------------------//
-    [types.GET_PRODUCT]: (state, { payload }) => ({
+    //---------------------SIGNUP -------------------------------//
+    [types.SIGNUP]: (state, { payload }) => ({
       ...state,
-      product: {
-        ...state.product,
+      signUp: {
+        ...state.signUp,
         loading: true,
         pending: true,
         hasError: false,
       },
     }),
-    [types.GET_PRODUCT_SUCCESS]: (state, { payload }) => ({
+    [types.SIGNUP_SUCCESS]: (state, { payload }) => ({
       ...state,
-      product: {
-        ...state.product,
+      signUp: {
+        ...state.signUp,
         loading: false,
         pending: false,
         data: payload,
       },
     }),
 
-    [types.GET_PRODUCT_FAILED]: (state, { payload }) => ({
+    [types.SIGNUP_FAILED]: (state, { payload }) => ({
       ...state,
-      product: {
-        ...state.product,
+      signUp: {
+        ...state.signUp,
+        loading: false,
+        pending: false,
+        hasError: true,
+        error: { payload },
+      },
+    }),
+    //-------------------------------------------------------
+    //---------------------LOGIN -------------------------------//
+    [types.LOGIN]: (state, { payload }) => ({
+      ...state,
+      login: {
+        ...state.login,
+        loading: true,
+        pending: true,
+        hasError: false,
+      },
+    }),
+    [types.LOGIN_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      login: {
+        ...state.login,
+        loading: false,
+        pending: false,
+        data: payload,
+      },
+    }),
+
+    [types.LOGIN_FAILED]: (state, { payload }) => ({
+      ...state,
+      login: {
+        ...state.login,
         loading: false,
         pending: false,
         hasError: true,

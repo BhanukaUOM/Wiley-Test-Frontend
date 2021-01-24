@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from '../../components/controls/Fields';
@@ -7,18 +8,26 @@ import { Link, withRouter } from "react-router-dom"
 import { NotificationManager } from "react-notifications";
 class Registration extends Component {
 
-    handleSubmit = () => {
-        console.log("handleSubmit", this.props)
-        NotificationManager.info("Please login to the system", "Registration");
+    handleSubmit = (values) => {
+        let sugnUpDto = {
+            email: values && values.email,
+            name: values && values.name,
+            password: values && values.password
+        }
+        console.log("sugnUpDto", sugnUpDto)
+
+        // NotificationManager.info("Please login to the system", "Registration");
 
         // this.props.history.push("/dashboard")
+        this.props.authActions.signUp(sugnUpDto)
     }
     render() {
-        const { handleSubmit } = this.props
+        const { handleSubmit, signUp } = this.props
+        console.log("🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ render ~ signUp", signUp)
 
         return (
             <div className="login-container">
-                <div className="container">
+                <div className="auth-container">
                     <div className="image">
                         <h1>Welcome To <span>Wiley</span></h1>
                     </div>
@@ -46,7 +55,7 @@ class Registration extends Component {
                                 <Field
                                     type="text"
                                     className="form-control"
-                                    name="username"
+                                    name="email"
                                     component={InputField}
                                     placeholder="name@user.com"
                                     id="txt" aria-describedby="helpId"
@@ -79,7 +88,10 @@ class Registration extends Component {
 
                             <Link className="fp" to="/login">Login</Link>
                             <br />
-                            <button type="button" className="btn" type="submit">Register</button>
+                            <button type="button" className="btn" type="submit" disabled={signUp.pending}>{signUp.pending ?
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only"></span>
+                                </div> : "Signup"}</button>
                         </form>
                     </div>
                 </div>
@@ -91,7 +103,7 @@ class Registration extends Component {
 
 const validate = values => {
     const errors = {};
-    if (!values.username) {
+    if (!values.email) {
         errors.username = "Email is Required";
     }
     if (!values.password) {
@@ -102,10 +114,15 @@ const validate = values => {
 
 function mapStateToProps(state) {
     return {
-        ...state
+        signUp: state.auth.signUp
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        authActions: bindActionCreators(authActions, dispatch),
+    };
+}
 
 export default reduxForm({
     form: "registration",
@@ -113,6 +130,6 @@ export default reduxForm({
 })(
     connect(
         mapStateToProps,
-        authActions
+        mapDispatchToProps
     )(withRouter(Registration))
 );

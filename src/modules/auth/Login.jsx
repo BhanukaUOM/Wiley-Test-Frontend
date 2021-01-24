@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
 import "./Login.css"
@@ -9,17 +10,21 @@ import { NotificationManager } from "react-notifications";
 
 export class Login extends Component {
 
-  handleSubmit = () => {
-    console.log("handleSubmit", this.props)
-    NotificationManager.info("Please login to the system", "Login");
+  handleSubmit = (values) => {
+    let loginDto = {
+      email: values && values.email,
+      password: values && values.password
+    }
+    console.log("loginDto", loginDto)
 
-    // this.props.history.push("/dashboard")
+    this.props.authActions.login(loginDto)
+
   }
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, login } = this.props
     return (
       <div className="login-container">
-        <div className="container">
+        <div className="auth-container">
           <div className="image">
             <h1>Welcome To <span>Wiley</span></h1>
           </div>
@@ -31,7 +36,6 @@ export class Login extends Component {
               <div className="form-group">
                 <label htmlFor>UserName</label>
                 <br />
-                {/* <input type="text" className="form-control" name id="txt" aria-describedby="helpId" placeholder="UserName" /> */}
                 <Field
                   type="text"
                   className="form-control"
@@ -44,7 +48,6 @@ export class Login extends Component {
               <div className="form-group">
                 <label htmlFor>Password</label>
                 <br />
-                {/* <input type="password" className="form-control" name id="txt" placeholder="Password" /> */}
                 <Field
                   type="password"
                   className="form-control"
@@ -58,7 +61,9 @@ export class Login extends Component {
               <br />
               <Link className="fp" to="/forgot-password">Forgot Password?</Link>
               <br />
-              <button type="button" className="btn" type="submit">Login</button>
+              <button type="button" className="btn" type="submit" disabled={login.pending}>{login.pending ? <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+              </div> : "Login"}</button>
             </form>
           </div>
         </div>
@@ -80,7 +85,14 @@ const validate = values => {
 
 function mapStateToProps(state) {
   return {
-    ...state
+    login: state.auth.login
+
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    authActions: bindActionCreators(authActions, dispatch),
   };
 }
 
@@ -91,6 +103,6 @@ export default reduxForm({
 })(
   connect(
     mapStateToProps,
-    authActions
+    mapDispatchToProps
   )(withRouter(Login))
 );

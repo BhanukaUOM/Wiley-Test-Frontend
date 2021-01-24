@@ -7,7 +7,7 @@ export default {
   loginSuccess: createAction(types.LOGIN_SUCCESS),
   loginFailed: createAction(types.LOGIN_FAILED),
 
-  register: createAction(types.REGISTER),
-  registerSuccess: createAction(types.REGISTER_SUCCESS),
-  registerFail: createAction(types.REGISTER_FAILED),
+  signUp: createAction(types.SIGNUP),
+  signUpSuccess: createAction(types.SIGNUP_SUCCESS),
+  signUpFail: createAction(types.SIGNUP_FAILED),
 };

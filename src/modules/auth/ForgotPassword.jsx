@@ -16,7 +16,7 @@ class ForgotPassword extends Component {
 
         return (
             <div className="login-container">
-                <div className="container">
+                <div className="auth-container">
                     <div className="image">
                         <h1>Welcome To <span>Wiley</span></h1>
                     </div>
