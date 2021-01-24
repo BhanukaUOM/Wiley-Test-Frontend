@@ -1,24 +1,20 @@
 import React from "react";
 import { NotificationContainer } from "react-notifications";
-import Footer from "../components/footer/Footer";
-import Header from "../components/header/Header";
 import history from "../_helpers/history";
 
-const DashboardLayout = (ViewComponent) => {
+const AuthLayout = (ViewComponent) => {
     return class extends React.Component {
         componentDidMount() {
             const token = localStorage.token;
-            if (!token)
-                history.push("/login")
+            if (!!token)
+                history.push("/dashboard")
         }
         render() {
             return (
                 <div>
-                    <Header />
                     <>
                         <ViewComponent />
                     </>
-                    <Footer />
                     <NotificationContainer />
 
                 </div>
@@ -27,4 +23,4 @@ const DashboardLayout = (ViewComponent) => {
     };
 };
 
-export default DashboardLayout;
+export default AuthLayout;

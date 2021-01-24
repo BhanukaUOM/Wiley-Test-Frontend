@@ -1,37 +1,45 @@
 // layouts
+import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 import DefaultLayout from "./layouts/DefaultLayout";
 import views from "./modules/views";
 
+let authUser = false
+
 const routes = [
   {
     path: "/confirm-account",
-    layout: DefaultLayout,
+    layout: AuthLayout,
     exact: true,
+    authUser: authUser,
     component: views.ConfirmAccountView,
   },
   {
     path: "/forgot-password",
-    layout: DefaultLayout,
+    layout: AuthLayout,
     exact: true,
+    authUser: authUser,
     component: views.ForgotPasswordView,
   },
   {
     path: "/dashboard",
     layout: DashboardLayout,
     exact: true,
+    authUser: authUser,
     component: views.DashboardView,
   },
   {
     path: "/register",
-    layout: DefaultLayout,
+    layout: AuthLayout,
     exact: true,
+    authUser: authUser,
     component: views.RegistrationView,
   },
   {
     path: "/login",
-    layout: DefaultLayout,
+    layout: AuthLayout,
     exact: true,
+    authUser: authUser,
     component: views.LoginView,
   },
 
