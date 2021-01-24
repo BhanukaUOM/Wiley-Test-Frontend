@@ -8,4 +8,8 @@ export default {
   SIGNUP: action_header + "SIGNUP",
   SIGNUP_SUCCESS: action_header + "SIGNUP_SUCCESS",
   SIGNUP_FAILED: action_header + "SIGNUP_FAILED",
+
+  CONFIRM_ACCOUNT: action_header + "CONFIRM_ACCOUNT",
+  CONFIRM_ACCOUNT_SUCCESS: action_header + "CONFIRM_ACCOUNT_SUCCESS",
+  CONFIRM_ACCOUNT_FAILED: action_header + "CONFIRM_ACCOUNT_FAILED",
 };

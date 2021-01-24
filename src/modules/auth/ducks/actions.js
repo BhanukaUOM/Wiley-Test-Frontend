@@ -10,4 +10,8 @@ export default {
   signUp: createAction(types.SIGNUP),
   signUpSuccess: createAction(types.SIGNUP_SUCCESS),
   signUpFail: createAction(types.SIGNUP_FAILED),
+
+  confirmAccount: createAction(types.CONFIRM_ACCOUNT),
+  confirmAccountSuccess: createAction(types.CONFIRM_ACCOUNT_SUCCESS),
+  confirmAccountFail: createAction(types.CONFIRM_ACCOUNT_FAILED),
 };

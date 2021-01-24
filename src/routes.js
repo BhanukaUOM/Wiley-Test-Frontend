@@ -4,6 +4,12 @@ import views from "./modules/views";
 
 const routes = [
   {
+    path: "/confirm-account",
+    layout: DefaultLayout,
+    exact: true,
+    component: views.ConfirmAccountView,
+  },
+  {
     path: "/forgot-password",
     layout: DefaultLayout,
     exact: true,
@@ -27,6 +33,7 @@ const routes = [
     exact: true,
     component: views.LoginView,
   },
+
 
   //   //should be last one
   //   {

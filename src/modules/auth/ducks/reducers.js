@@ -8,6 +8,9 @@ const initialState = {
     ...initialStateModal
   },
   login: {
+    ...initialStateModal,
+  },
+  confirmAccount: {
     ...initialStateModal
   }
 };
@@ -70,6 +73,37 @@ export default handleActions(
       ...state,
       login: {
         ...state.login,
+        loading: false,
+        pending: false,
+        hasError: true,
+        error: { payload },
+      },
+    }),
+    //-------------------------------------------------------
+    //---------------------LOGIN -------------------------------//
+    [types.CONFIRM_ACCOUNT]: (state, { payload }) => ({
+      ...state,
+      confirmAccount: {
+        ...state.confirmAccount,
+        loading: true,
+        pending: true,
+        hasError: false,
+      },
+    }),
+    [types.CONFIRM_ACCOUNT_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      confirmAccount: {
+        ...state.confirmAccount,
+        loading: false,
+        pending: false,
+        data: payload,
+      },
+    }),
+
+    [types.CONFIRM_ACCOUNT_FAILED]: (state, { payload }) => ({
+      ...state,
+      confirmAccount: {
+        ...state.confirmAccount,
         loading: false,
         pending: false,
         hasError: true,
