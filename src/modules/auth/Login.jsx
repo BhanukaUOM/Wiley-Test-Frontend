@@ -54,6 +54,8 @@ export class Login extends Component {
                   id="txt" aria-describedby="helpId"
                 />
               </div>
+              <Link className="fp" to="/register">Register</Link>
+              <br />
               <Link className="fp" to="/forgot-password">Forgot Password?</Link>
               <br />
               <button type="button" className="btn" type="submit">Login</button>
