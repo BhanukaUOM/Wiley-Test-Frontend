@@ -5,18 +5,18 @@ import routes from "./routes";
 
 const App = () => (
   <div>
-      <Router history={history}>
-            <Switch>
-              {routes.map((route, index) => (
-                <Route
-                  key={index}
-                  exact={route.exact}
-                  path={route.path}
-                  component={route.layout(route.component)}
-                />
-              ))}
-            </Switch>
-      </Router>
+    <Router history={history}>
+      <Switch>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            exact={route.exact}
+            path={route.path}
+            component={route.layout(route.component)}
+          />
+        ))}
+      </Switch>
+    </Router>
   </div>
 );
 

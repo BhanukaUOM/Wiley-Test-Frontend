@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 // import 'bootstrap-css-only/css/bootstrap.min.css';
 import { Provider } from "react-redux";
 import store from "./store";
+import 'react-notifications/lib/notifications.css';
 
 ReactDOM.render(
   <React.StrictMode>

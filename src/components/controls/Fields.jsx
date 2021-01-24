@@ -66,7 +66,7 @@ export const InputField = ({
 
     default:
       return (
-        <div class="input-group sm-2 input-group-sm ">
+        <>
           <input
             {...input}
             placeholder={placeholder}
@@ -82,7 +82,7 @@ export const InputField = ({
               </div>
             )) ||
               (warning && <span>{warning}</span>))}
-        </div>
+        </>
       );
   }
 };
