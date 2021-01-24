@@ -5,12 +5,15 @@ import { Field, reduxForm } from "redux-form";
 import "./Login.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
+import { NotificationManager } from "react-notifications";
 
 export class Login extends Component {
 
   handleSubmit = () => {
     console.log("handleSubmit", this.props)
-    this.props.history.push("/dashboard")
+    NotificationManager.info("Please login to the system", "Login");
+
+    // this.props.history.push("/dashboard")
   }
   render() {
     const { handleSubmit } = this.props
