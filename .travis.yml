@@ -3,7 +3,7 @@ env:
 
 language: node_js
 node_js: $NODEJS_VER
-warnings_are_errors: true
+warnings_are_errors: false
 
 jobs:
   include:
@@ -18,7 +18,7 @@ jobs:
         - export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
         - echo "CI/CD Starting for $BRANCH"
         - npm install
-        - npm run build
+        - CI=false npm run build
         - npm run deploy
       after_success:
         - echo "Deployed Successfully"
@@ -28,7 +28,7 @@ jobs:
       script:
         - echo "CI/CD Starting for $BRANCH"
         - npm install
-        - npm run build
+        - CI=false npm run build
       after_success:
         - echo "CI Successfully"
 
@@ -37,6 +37,6 @@ jobs:
       script:
         - echo "CI/CD Starting for $BRANCH"
         - npm install
-        - npm run build
+        - CI=false npm run build
       after_success:
         - echo "CI Successfully"
