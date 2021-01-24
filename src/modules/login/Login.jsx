@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
+import { authActions } from "./ducks";
+import { Field, reduxForm } from "redux-form";
 import "./Login.css"
+import { InputField } from '../../components/controls/Fields';
+
 export class Login extends Component {
     render() {
         return (
@@ -18,7 +23,14 @@ export class Login extends Component {
                 <div className="form-group">
                   <label htmlFor>UserName</label>
                   <br />
-                  <input type="text" className="form-control" name id="txt" aria-describedby="helpId" placeholder="UserName" />
+                  {/* <input type="text" className="form-control" name id="txt" aria-describedby="helpId" placeholder="UserName" /> */}
+                  <Field
+                    type="text"
+                    className="form-control mb-2"
+                    name="username"
+                    component={InputField}
+                    placeholder="name@user.com"
+                  />
                 </div>
                 <div className="form-group">
                   <label htmlFor>Password</label>
@@ -35,4 +47,30 @@ export class Login extends Component {
     }
 }
 
-export default Login
+const validate = values => {
+    const errors = {};
+    if (!values.username) {
+      errors.username = "Email is Required";
+    }
+    if (!values.password) {
+      errors.password = "Password is Required";
+    }
+    return errors;
+  };
+  
+  function mapStateToProps(state) {
+    return {
+      ...state
+    };
+  }
+
+
+export default reduxForm({
+    form: "login",
+    validate
+  })(
+    connect(
+      mapStateToProps,
+      authActions
+    )(Login)
+  );
