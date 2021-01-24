@@ -1,4 +1,5 @@
 // layouts
+import DashboardLayout from "./layouts/DashboardLayout";
 import DefaultLayout from "./layouts/DefaultLayout";
 import views from "./modules/views";
 
@@ -17,7 +18,7 @@ const routes = [
   },
   {
     path: "/dashboard",
-    layout: DefaultLayout,
+    layout: DashboardLayout,
     exact: true,
     component: views.DashboardView,
   },
