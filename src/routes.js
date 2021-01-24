@@ -4,6 +4,18 @@ import views from "./modules/views";
 
 const routes = [
   {
+    path: "/forgot-password",
+    layout: DefaultLayout,
+    exact: true,
+    component: views.ForgotPasswordView,
+  },
+  {
+    path: "/dashboard",
+    layout: DefaultLayout,
+    exact: true,
+    component: views.DashboardView,
+  },
+  {
     path: "/register",
     layout: DefaultLayout,
     exact: true,

@@ -51,7 +51,7 @@ span {
 .content h1 {
     padding: 40px;
     padding-top: 30px;
-    font-family: 'Niconne', cursive;
+    /* font-family: 'Niconne', cursive; */
     font-size: 40px;
     color: #c446c9;
 }

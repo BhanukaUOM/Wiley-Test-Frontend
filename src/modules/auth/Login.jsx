@@ -10,13 +10,12 @@ export class Login extends Component {
 
   handleSubmit = () => {
     console.log("handleSubmit", this.props)
-    this.props.history.push("/register")
+    this.props.history.push("/dashboard")
   }
   render() {
     const { handleSubmit } = this.props
     return (
       <div className="login-container">
-        <title>Login Form</title>
         <div className="container">
           <div className="image">
             <h1>Welcome To <span>Wiley</span></h1>
@@ -52,7 +51,7 @@ export class Login extends Component {
                   id="txt" aria-describedby="helpId"
                 />
               </div>
-              <Link className="fp" to="forgot-password">Forgot Password?</Link>
+              <Link className="fp" to="/forgot-password">Forgot Password?</Link>
               <br />
               <button type="button" className="btn" type="submit">Login</button>
             </form>
