@@ -9,9 +9,9 @@ const headers = {
 };
 
 export const setAuth = async () => {
-    const idToken = "dgddfgfdgfdgf";
-    if (!!idToken) {
-        headers["authorization"] = `Bearer ${idToken}`;
+    const token = localStorage.token;
+    if (!!token) {
+        headers["authorization"] = `Bearer ${token}`;
     }
 
     instance = axios.create({

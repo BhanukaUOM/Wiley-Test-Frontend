@@ -60,6 +60,7 @@ const login = createLogic({
             .then((resp) => resp.data)
             .then((data) => {
                 console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
+                localStorage.setItem("token", JSON.stringify(data.accessToken));
                 NotificationManager.success(data.message || "Success full sign up..!", "Success");
                 dispatch(actions.loginSuccess(data));
                 history.push("/dashboard")

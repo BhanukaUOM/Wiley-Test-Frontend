@@ -1,20 +1,72 @@
 import React from 'react'
+import Swal from 'sweetalert2'
+import history from '../../_helpers/history'
+
+const logout = () => {
+    // alert("logout")
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to logout.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+                timer: 1200,
+                timerProgressBar: true,
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+                console.log("DOne")
+                localStorage.removeItem("token");
+                history.push("/login")
+            })
+        }
+    })
+}
 
 function Header() {
     return (
-        <div className="pos-f-t">
-            <div className="collapse" id="navbarToggleExternalContent">
-                <div className="bg-dark p-4">
-                    <h4 className="text-white">Collapsed content</h4>
-                    <span className="text-muted">Toggleable via the navbar brand.</span>
-                </div>
-            </div>
-            <nav className="navbar navbar-dark bg-dark">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ backgroundColor: "red" }}>
+            <div className="container">
+                <a className="navbar-brand" href="#">Navbar</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                 </button>
-            </nav>
-        </div>
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li className="nav-item active">
+                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div className="float-right" id="navbarTogglerDemo02">
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li className="nav-item active">
+                            <div className="nav-link logout-label" onClick={logout}>Logout </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
 
     )
 }

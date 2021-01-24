@@ -18,7 +18,7 @@ class ForgotPassword extends Component {
             <div className="login-container">
                 <div className="auth-container">
                     <div className="image">
-                        <h1>Welcome To <span>Wiley</span></h1>
+                        <h1>Welcome To <span className="auth-span">Wiley</span></h1>
                     </div>
                     <div className="content">
                         <h1>Forgot Password</h1>
@@ -41,7 +41,7 @@ class ForgotPassword extends Component {
 
                             <Link className="fp" to="/login">Back to Login</Link>
                             <br />
-                            <button type="button" className="btn" type="submit">Submit</button>
+                            <button type="button" className="btn auth-button" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>

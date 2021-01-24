@@ -26,7 +26,7 @@ export class Login extends Component {
       <div className="login-container">
         <div className="auth-container">
           <div className="image">
-            <h1>Welcome To <span>Wiley</span></h1>
+            <h1>Welcome To <span className="auth-span">Wiley</span></h1>
           </div>
           <div className="content">
             <h1>Login</h1>
@@ -34,12 +34,12 @@ export class Login extends Component {
               onSubmit={handleSubmit(this.handleSubmit)}
             >
               <div className="form-group">
-                <label htmlFor>UserName</label>
+                <label htmlFor>Email</label>
                 <br />
                 <Field
                   type="text"
                   className="form-control"
-                  name="username"
+                  name="email"
                   component={InputField}
                   placeholder="name@user.com"
                   id="txt" aria-describedby="helpId"
@@ -61,7 +61,7 @@ export class Login extends Component {
               <br />
               <Link className="fp" to="/forgot-password">Forgot Password?</Link>
               <br />
-              <button type="button" className="btn" type="submit" disabled={login.pending}>{login.pending ? <div class="spinner-border" role="status">
+              <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div class="spinner-border" role="status">
                 <span class="sr-only"></span>
               </div> : "Login"}</button>
             </form>
@@ -74,8 +74,8 @@ export class Login extends Component {
 
 const validate = values => {
   const errors = {};
-  if (!values.username) {
-    errors.username = "Email is Required";
+  if (!values.email) {
+    errors.email = "Email is Required";
   }
   if (!values.password) {
     errors.password = "Password is Required";

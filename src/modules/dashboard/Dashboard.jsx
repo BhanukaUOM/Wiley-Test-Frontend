@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Dashboard extends Component {
     render() {
         return (
-            <div style={{ minHeight: 1000 }}>
+            <div className="container" style={{ minHeight: 1000 }}>
                 Dashboard
             </div>
         )
