@@ -1,5 +1,4 @@
 import { createLogic } from "redux-logic";
-
 import actions from "./actions";
 import types from "./types";
 import EndPoints from "../../../utils/EndPoints";
@@ -23,16 +22,13 @@ const signUp = createLogic({
         HTTPClient.Post(EndPoints.signup, action.payload)
             .then((resp) => resp.data)
             .then((data) => {
-                console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 NotificationManager.success(data.message || "Success full sign up..!", "Success");
                 dispatch(actions.signUpSuccess(data));
                 setTimeout(() => {
                     history.push("/login")
-                }, 1000);
+                }, 2500);
             })
             .catch((err) => {
-                console.log("~ err", err)
-                console.log("~ err", err.response)
                 let error = err && err.response && err.response.data
                 NotificationManager.error(error.message || "Something went wrong..!", error.error || "Fail");
 
@@ -62,23 +58,19 @@ const login = createLogic({
         HTTPClient.Post(EndPoints.login, action.payload)
             .then((resp) => resp.data)
             .then((data) => {
-                console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 localStorage.setItem("token", JSON.stringify(data.accessToken));
                 localStorage.setItem("user", JSON.stringify(data.user));
                 NotificationManager.success(data.message || "Success full sign up..!", "Success");
                 setTimeout(() => {
                     history.push("/dashboard")
-                }, 1000);
+                }, 1500);
                 dispatch(actions.loginSuccess(data));
 
 
             })
             .catch((err) => {
-                console.log("~ err", err)
-                console.log("~ err", err.response)
                 let error = err && err.response && err.response.data
                 NotificationManager.error(error.message || "Something went wrong..!", error.error || "Fail");
-
                 dispatch(
                     actions.loginFailed({
                         title: "Error!",
@@ -102,22 +94,19 @@ const confirmAccount = createLogic({
         } else {
             HTTPClient = API;
         }
-        console.log("action.payload ", action.payload)
 
         HTTPClient.Get(EndPoints.confirmAccount + `?token=${action.payload}`)
             .then((resp) => resp.data)
             .then((data) => {
-                console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 NotificationManager.success(data.message || "Confirm Account Success", "Success");
                 dispatch(actions.confirmAccountSuccess(data));
-                history.push("/dashboard")
+                setTimeout(() => {
+                    history.push("/dashboard")
+                }, 1500);
             })
             .catch((err) => {
-                console.log("~ err", err)
-                console.log("~ err", err.response)
                 let error = err && err.response && err.response.data
                 NotificationManager.error(error || "Something went wrong..!", error.error || "Fail");
-
                 dispatch(
                     actions.confirmAccountFail({
                         title: "Error!",
@@ -141,22 +130,18 @@ const resetPassword = createLogic({
         } else {
             HTTPClient = API;
         }
-        console.log("action.payload ", action.payload)
 
         HTTPClient.Post(EndPoints.resetPassword, action.payload)
             .then((resp) => resp.data)
             .then((data) => {
-                console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 NotificationManager.success(data.message || "Confirm Account Success", "Success");
                 dispatch(reset("forgotPassword"));
                 dispatch(actions.resetPasswordSuccess(data));
                 setTimeout(() => {
                     history.push("/login")
-                }, 1000);
+                }, 1500);
             })
             .catch((err) => {
-                console.log("~ err", err)
-                console.log("~ err", err.response)
                 let error = err && err.response && err.response.data
                 NotificationManager.error(error && error.message || "Something went wrong..!", "Fail");
 
@@ -183,20 +168,14 @@ const resetPasswordVerify = createLogic({
         } else {
             HTTPClient = API;
         }
-        console.log("action.payload ", action.payload)
-
-        HTTPClient.Post(EndPoints.resetPassword, action.payload)
+        HTTPClient.Post(EndPoints.resetPasswordVerify, action.payload)
             .then((resp) => resp.data)
             .then((data) => {
-                console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 NotificationManager.success(data.message || "Confirm Account Success", "Success");
                 dispatch(reset("forgotPassword"));
-
                 dispatch(actions.resetPasswordVerifySuccess(data));
             })
             .catch((err) => {
-                console.log("~ err", err)
-                console.log("~ err", err.response)
                 let error = err && err.response && err.response.data
                 NotificationManager.error(error && error.message || "Something went wrong..!", "Fail");
 
