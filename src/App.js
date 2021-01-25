@@ -15,8 +15,8 @@ const App = () => (
             component={route.layout(route.component)}
           />
         ))}
+        <Redirect from="/" to="/login" />
       </Switch>
-      {/* <Redirect from="/" to="/login" /> */}
     </Router>
   </div>
 );
