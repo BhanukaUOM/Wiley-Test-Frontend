@@ -3,7 +3,6 @@ import Swal from 'sweetalert2'
 import history from '../../_helpers/history'
 import { Link } from "react-router-dom"
 const logout = () => {
-    // alert("logout")
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to logout.",
@@ -15,8 +14,8 @@ const logout = () => {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
+                title: 'Logout!',
+                text: 'You are logouted',
                 icon: 'success',
                 timer: 1200,
                 timerProgressBar: true,
@@ -28,7 +27,6 @@ const logout = () => {
                 console.log("DOne")
                 localStorage.removeItem("token");
                 localStorage.removeItem("user");
-
                 history.push("/login")
             })
         }

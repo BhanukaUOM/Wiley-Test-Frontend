@@ -42,7 +42,8 @@ export class Login extends Component {
                   name="email"
                   component={InputField}
                   placeholder="email"
-                  id="txt" aria-describedby="helpId"
+                  aria-describedby="helpId"
+                  autoComplete
                 />
               </div>
               <div className="form-group">
@@ -53,7 +54,8 @@ export class Login extends Component {
                   name="password"
                   component={InputField}
                   placeholder="Password"
-                  id="txt" aria-describedby="helpId"
+                  aria-describedby="helpId"
+                  autoComplete
                 />
               </div>
               <Link className="auth-fp" to="/register">Register</Link>

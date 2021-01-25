@@ -5,7 +5,6 @@ import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
-import { NotificationManager } from "react-notifications";
 class Registration extends Component {
 
     handleSubmit = (values) => {
@@ -14,17 +13,10 @@ class Registration extends Component {
             name: values && values.name,
             password: values && values.password
         }
-        console.log("sugnUpDto", sugnUpDto)
-
-        // NotificationManager.info("Please login to the system", "Registration");
-
-        // this.props.history.push("/dashboard")
         this.props.authActions.signUp(sugnUpDto)
     }
     render() {
         const { handleSubmit, signUp } = this.props
-        console.log("🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ render ~ signUp", signUp)
-
         return (
             <div className="login-container">
                 <div className="auth-container">
@@ -45,7 +37,8 @@ class Registration extends Component {
                                     name="name"
                                     component={InputField}
                                     placeholder="name"
-                                    id="txt" aria-describedby="helpId"
+                                    aria-describedby="helpId"
+                                    autoComplete
                                 />
                             </div>
                             <div className="form-group">
@@ -56,7 +49,8 @@ class Registration extends Component {
                                     name="email"
                                     component={InputField}
                                     placeholder="email"
-                                    id="txt" aria-describedby="helpId"
+                                    aria-describedby="helpId"
+                                    autoComplete
                                 />
                             </div>
                             <div className="form-group">
@@ -67,7 +61,8 @@ class Registration extends Component {
                                     name="password"
                                     component={InputField}
                                     placeholder="Password"
-                                    id="txt" aria-describedby="helpId"
+                                    aria-describedby="helpId"
+                                    autoComplete
                                 />
                             </div>
                             <div className="form-group">
@@ -78,7 +73,9 @@ class Registration extends Component {
                                     name="confirmPassword"
                                     component={InputField}
                                     placeholder="Confirm Password"
-                                    id="txt" aria-describedby="helpId"
+                                    aria-describedby="helpId"
+                                    autoComplete
+
                                 />
                             </div>
 
@@ -99,11 +96,24 @@ class Registration extends Component {
 
 const validate = values => {
     const errors = {};
+    if (!values.name) {
+        errors.name = "Name is Required";
+    }
     if (!values.email) {
-        errors.username = "Email is Required";
+        errors.email = "Email is Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = "Invalid email";
     }
     if (!values.password) {
         errors.password = "Password is Required";
+    } else if (values.password.length < 6) {
+        errors.password = "Password must be at least 6 characters";
+    }
+    if (!values.confirmPassword) {
+        errors.confirmPassword = "Confirm Password is Required";
+    }
+    if (values.password && values.confirmPassword && (values.confirmPassword !== values.password)) {
+        errors.confirmPassword = "Password mismatch";
     }
     return errors;
 };
