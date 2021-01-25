@@ -1,36 +1,11 @@
 import React from 'react'
-import Swal from 'sweetalert2'
 import history from '../../_helpers/history'
 import { Link } from "react-router-dom"
+
 const logout = () => {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to logout.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Logout!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: 'Logout!',
-                text: 'You are logouted',
-                icon: 'success',
-                timer: 1200,
-                timerProgressBar: true,
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
-                }
-                console.log("DOne")
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-                history.push("/login")
-            })
-        }
-    })
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    history.push("/login")
 }
 
 function Header({ token }) {

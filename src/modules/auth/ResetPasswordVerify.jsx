@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import { bindActionCreators } from "redux";
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
+import CoverImage from '../../components/coverImage/CoverImage';
 
 class ResetPasswordVerify extends Component {
     handleSubmit = (values) => {
@@ -25,9 +26,7 @@ class ResetPasswordVerify extends Component {
         return (
             <div className="login-container">
                 <div className="auth-container">
-                    <div className="auth-image">
-                        <h1>Welcome To <span className="auth-span">Wiley</span></h1>
-                    </div>
+                    <CoverImage />
                     <div className="auth-content">
                         <h1>Reset Password</h1>
                         <form
@@ -36,19 +35,17 @@ class ResetPasswordVerify extends Component {
                             <div className="form-group">
                                 <br />
                                 <Field
-                                    type="text"
+                                    type="password"
                                     className="auth-form-control"
                                     name="password"
                                     component={InputField}
                                     placeholder="New Password"
                                     aria-describedby="helpId"
                                     autocomplete="new-password"
-
                                 />
                                 <br />
-                                <br />
                                 <Field
-                                    type="text"
+                                    type="password"
                                     className="auth-form-control"
                                     name="confirmPassword"
                                     component={InputField}
@@ -57,17 +54,16 @@ class ResetPasswordVerify extends Component {
                                     autocomplete="new-password"
                                 />
                             </div>
-
-
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={resetPasswordVerify.pending}>{resetPasswordVerify.pending ?
                                 <div className="spinner-border" role="status">
                                     <span className="sr-only"></span>
-                                </div> : "Submit"}</button>
-
-                            <hr />
-                            <Link className="auth-fp" to="/login">Back to Login</Link>
+                                </div> : <span className="btn-text">SUBMIT</span>}</button>
                         </form>
+                        <hr />
+                        <div style={{ paddingBottom: 10 }}>
+                            <Link className="auth-fp" to="/login">Back to Login</Link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,12 +74,12 @@ class ResetPasswordVerify extends Component {
 const validate = values => {
     const errors = {};
     if (!values.password) {
-        errors.password = "Email is Required";
-    } else if (values.password.length < 5) {
-        errors.password = "Password must be 6 charaters";
+        errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+        errors.password = "Password must be at least 6 charaters";
     }
     if (!values.confirmPassword) {
-        errors.confirmPassword = "Confirm Email is Required";
+        errors.confirmPassword = "Confirm Password is Required";
     }
     if (values.password && values.confirmPassword && (values.confirmPassword !== values.password)) {
         errors.confirmPassword = "Password mismatch";

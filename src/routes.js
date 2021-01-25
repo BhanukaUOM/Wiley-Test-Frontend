@@ -43,11 +43,11 @@ const routes = [
     component: views.ResetPasswordVerifyView,
   },
   {
-    path: "/sign-in",
+    path: "/login",
     layout: AuthLayout,
     exact: true,
     authUser: authUser,
-    component: views.SignInView,
+    component: views.LoginView,
   },
 
 
