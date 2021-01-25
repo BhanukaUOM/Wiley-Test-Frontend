@@ -24,10 +24,10 @@ export class SignIn extends Component {
       <div className="login-container">
         <div className="auth-container">
           <div className="auth-image">
-            <h1>Welcome To <span className="auth-span">Wiley</span></h1>
+            <h1>Welcome to <span className="auth-span">Wiley</span></h1>
           </div>
           <div className="auth-content">
-            <h1>Sign In</h1>
+            <h1>Login</h1>
             <form
               onSubmit={handleSubmit(this.handleSubmit)}
             >
@@ -38,7 +38,7 @@ export class SignIn extends Component {
                   className="auth-form-control"
                   name="email"
                   component={InputField}
-                  placeholder="email"
+                  placeholder="Your email"
                   aria-describedby="helpId"
                   autoComplete="on"
                 />
@@ -52,7 +52,7 @@ export class SignIn extends Component {
                   className="auth-form-control"
                   name="password"
                   component={InputField}
-                  placeholder="Password"
+                  placeholder="Your password"
                   aria-describedby="helpId"
                   autoComplete="on"
 
@@ -61,10 +61,12 @@ export class SignIn extends Component {
 
               <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div className="spinner-border" role="status">
                 <span className="sr-only"></span>
-              </div> : "Login"}</button>
+              </div> : "LOGIN"}</button>
 
               <hr />
-              <Link className="auth-fp" to="/sign-up">Sign Up</Link>
+              <div>
+                <span>Not a member? </span><Link className="auth-fp" to="/sign-up">Sign Up</Link>
+              </div>
               <br />
               <Link className="auth-fp" to="/forgot-password">Forgot Password?</Link>
               <br />
@@ -79,12 +81,12 @@ export class SignIn extends Component {
 const validate = values => {
   const errors = {};
   if (!values.email) {
-    errors.email = "Email is Required";
+    errors.email = "Email is required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email";
   }
   if (!values.password) {
-    errors.password = "Password is Required";
+    errors.password = "Password is required";
   }
   if (values.password && values.password.length < 6) {
     errors.password = "Password must be at least 6 characters";

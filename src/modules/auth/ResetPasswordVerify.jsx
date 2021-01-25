@@ -13,8 +13,8 @@ class ResetPasswordVerify extends Component {
         const email = new URLSearchParams(this.props.location.search).get("email");
 
         let resetPasswordDto = {
-            email: "email",
-            token: "token",
+            email: email,
+            token: token,
             password: values && values.password
         }
         this.props.authActions.resetPasswordVerify(resetPasswordDto)
@@ -40,7 +40,7 @@ class ResetPasswordVerify extends Component {
                                     className="auth-form-control"
                                     name="password"
                                     component={InputField}
-                                    placeholder="Password"
+                                    placeholder="New Password"
                                     aria-describedby="helpId"
                                     autocomplete="new-password"
 
@@ -58,12 +58,15 @@ class ResetPasswordVerify extends Component {
                                 />
                             </div>
 
-                            <Link className="auth-fp" to="/login">Back to Login</Link>
+
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={resetPasswordVerify.pending}>{resetPasswordVerify.pending ?
                                 <div className="spinner-border" role="status">
                                     <span className="sr-only"></span>
                                 </div> : "Submit"}</button>
+
+                            <hr />
+                            <Link className="auth-fp" to="/login">Back to Login</Link>
                         </form>
                     </div>
                 </div>
