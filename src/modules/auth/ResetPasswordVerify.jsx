@@ -41,7 +41,7 @@ class ResetPasswordVerify extends Component {
                                     name="password"
                                     component={InputField}
                                     placeholder="Password"
-                                    id="txt" aria-describedby="helpId"
+                                    aria-describedby="helpId"
                                 />
                                 <br />
                                 <br />
@@ -51,7 +51,7 @@ class ResetPasswordVerify extends Component {
                                     name="confirmPassword"
                                     component={InputField}
                                     placeholder="Confirm Password"
-                                    id="txt" aria-describedby="helpId"
+                                    aria-describedby="helpId"
                                 />
                             </div>
 
