@@ -39,7 +39,6 @@ class SignUp extends Component {
                                     placeholder="Name"
                                     aria-describedby="helpId"
                                     autoComplete="on"
-
                                 />
                             </div>
                             <div className="form-group">
@@ -52,7 +51,6 @@ class SignUp extends Component {
                                     placeholder="Email"
                                     aria-describedby="helpId"
                                     autoComplete="on"
-
                                 />
                             </div>
                             <div className="form-group">
@@ -65,7 +63,6 @@ class SignUp extends Component {
                                     placeholder="Password"
                                     aria-describedby="helpId"
                                     autoComplete="on"
-
                                 />
                             </div>
                             <div className="form-group">
@@ -78,11 +75,8 @@ class SignUp extends Component {
                                     placeholder="Confirm Password"
                                     aria-describedby="helpId"
                                     autoComplete="on"
-
-
                                 />
                             </div>
-
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={signUp.pending}>{signUp.pending ?
                                 <div className="spinner-border" role="status">
@@ -90,7 +84,7 @@ class SignUp extends Component {
                                 </div> : <span className="btn-text">SIGN UP</span>}</button>
 
                             <hr />
-                            <Link className="auth-fp" to="/login">Login</Link>
+                            <Link className="auth-fp" to="/login">Back to Login</Link>
 
                         </form>
                     </div>
