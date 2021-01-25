@@ -44,7 +44,16 @@ Simple Login/Registration page for Wiley Online Library.
 
    - Refer: [Install AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 
+### Configure Hosted S3 Bucket Name & CloudFront Distribution ID
 
+   - Configure in `package.json`
+
+   ```
+   "scripts": {
+    "deploy": "aws s3 sync build s3://<S3_Bucket_Name> && aws cloudfront create-invalidation --distribution-id <CloudFront_Distribution_ID> --paths \"/*\""
+  }
+   ```
+   
 #### Deploy
    - Deploy: 
       ```
