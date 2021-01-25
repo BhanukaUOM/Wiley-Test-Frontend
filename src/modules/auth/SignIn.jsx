@@ -6,9 +6,8 @@ import { Field, reduxForm } from "redux-form";
 import "./Auth.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
-import { NotificationManager } from "react-notifications";
 
-export class Login extends Component {
+export class SignIn extends Component {
 
   handleSubmit = (values) => {
     let loginDto = {
@@ -16,8 +15,6 @@ export class Login extends Component {
       email: values && values.email,
       password: values && values.password
     }
-    console.log("loginDto", loginDto)
-
     this.props.authActions.login(loginDto)
 
   }
@@ -30,7 +27,7 @@ export class Login extends Component {
             <h1>Welcome To <span className="auth-span">Wiley</span></h1>
           </div>
           <div className="auth-content">
-            <h1>Login</h1>
+            <h1>Sign In</h1>
             <form
               onSubmit={handleSubmit(this.handleSubmit)}
             >
@@ -46,6 +43,8 @@ export class Login extends Component {
                   autoComplete
                 />
               </div>
+
+
               <div className="form-group">
                 <br />
                 <Field
@@ -58,13 +57,16 @@ export class Login extends Component {
                   autoComplete
                 />
               </div>
-              <Link className="auth-fp" to="/register">Register</Link>
+
+              <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div className="spinner-border" role="status">
+                <span className="sr-only"></span>
+              </div> : "Login"}</button>
+
+              <hr />
+              <Link className="auth-fp" to="/sign-up">Sign Up</Link>
               <br />
               <Link className="auth-fp" to="/forgot-password">Forgot Password?</Link>
               <br />
-              <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div class="spinner-border" role="status">
-                <span class="sr-only"></span>
-              </div> : "Login"}</button>
             </form>
           </div>
         </div>
@@ -104,11 +106,11 @@ function mapDispatchToProps(dispatch) {
 
 
 export default reduxForm({
-  form: "login",
+  form: "SignIn",
   validate
 })(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withRouter(Login))
+  )(withRouter(SignIn))
 );

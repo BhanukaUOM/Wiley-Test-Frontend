@@ -11,7 +11,7 @@ const AuthLayout = (ViewComponent) => {
         }
         render() {
             return (
-                <div>
+                <div style={{ backgroundColor: 'red' }}>
                     <>
                         <ViewComponent />
                     </>
