@@ -32,7 +32,7 @@ export const InputField = ({
           </select>
           {touched &&
             ((error && (
-              <div class="invalid-feedback" style={{ display: "block" }}>
+              <div className="invalid-feedback" style={{ display: "block" }}>
                 {error}
               </div>
             )) ||
@@ -56,7 +56,7 @@ export const InputField = ({
           </h6>
           {touched &&
             ((error && (
-              <div class="invalid-feedback" style={{ display: "block" }}>
+              <div className="invalid-feedback" style={{ display: "block" }}>
                 {error}
               </div>
             )) ||
@@ -66,7 +66,7 @@ export const InputField = ({
 
     default:
       return (
-        <>
+        <div>
           <input
             {...input}
             placeholder={placeholder}
@@ -77,12 +77,12 @@ export const InputField = ({
           />
           {touched &&
             ((error && (
-              <div class="invalid-feedback" style={{ display: "block" }}>
+              <div className="invalid-feedback" style={{ display: "block" }}>
                 {error}
               </div>
             )) ||
               (warning && <span>{warning}</span>))}
-        </>
+        </div>
       );
   }
 };

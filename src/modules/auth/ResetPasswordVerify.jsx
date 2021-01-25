@@ -42,6 +42,8 @@ class ResetPasswordVerify extends Component {
                                     component={InputField}
                                     placeholder="Password"
                                     aria-describedby="helpId"
+                                    autocomplete="new-password"
+
                                 />
                                 <br />
                                 <br />
@@ -52,14 +54,15 @@ class ResetPasswordVerify extends Component {
                                     component={InputField}
                                     placeholder="Confirm Password"
                                     aria-describedby="helpId"
+                                    autocomplete="new-password"
                                 />
                             </div>
 
                             <Link className="auth-fp" to="/login">Back to Login</Link>
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={resetPasswordVerify.pending}>{resetPasswordVerify.pending ?
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only"></span>
+                                <div className="spinner-border" role="status">
+                                    <span className="sr-only"></span>
                                 </div> : "Submit"}</button>
                         </form>
                     </div>

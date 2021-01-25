@@ -29,11 +29,11 @@ const routes = [
     component: views.DashboardView,
   },
   {
-    path: "/register",
+    path: "/sign-up",
     layout: AuthLayout,
     exact: true,
     authUser: authUser,
-    component: views.RegistrationView,
+    component: views.SignUpView,
   },
   {
     path: "/reset-password-verify",
@@ -43,11 +43,11 @@ const routes = [
     component: views.ResetPasswordVerifyView,
   },
   {
-    path: "/login",
+    path: "/sign-in",
     layout: AuthLayout,
     exact: true,
     authUser: authUser,
-    component: views.LoginView,
+    component: views.SignInView,
   },
 
 

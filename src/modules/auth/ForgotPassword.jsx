@@ -43,9 +43,12 @@ class ForgotPassword extends Component {
                                 />
                             </div>
 
-                            <Link className="auth-fp" to="/login">Back to Login</Link>
                             <br />
                             <button type="button" className="btn auth-button" type="submit">Submit</button>
+
+                            <hr />
+                            <Link className="auth-fp" to="/login">Back to Login</Link>
+
                         </form>
                     </div>
                 </div>

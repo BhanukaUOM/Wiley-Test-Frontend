@@ -5,7 +5,8 @@ import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
-class Registration extends Component {
+
+class SignUp extends Component {
 
     handleSubmit = (values) => {
         let sugnUpDto = {
@@ -18,13 +19,13 @@ class Registration extends Component {
     render() {
         const { handleSubmit, signUp } = this.props
         return (
-            <div className="login-container">
+            <div className="login-container" >
                 <div className="auth-container">
                     <div className="auth-image">
                         <h1>Welcome To <span className="auth-span">Wiley</span></h1>
                     </div>
                     <div className="auth-content">
-                        <h1>Registration</h1>
+                        <h1>Sign Up</h1>
                         <form
                             onSubmit={handleSubmit(this.handleSubmit)}
                             style={{ margin: 30 }}
@@ -79,12 +80,15 @@ class Registration extends Component {
                                 />
                             </div>
 
-                            <Link className="auth-fp" to="/login">Login</Link>
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={signUp.pending}>{signUp.pending ?
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only"></span>
+                                <div className="spinner-border" role="status">
+                                    <span className="sr-only"></span>
                                 </div> : "Signup"}</button>
+
+                            <hr />
+                            <Link className="auth-fp" to="/sign-in">Sign In</Link>
+
                         </form>
                     </div>
                 </div>
@@ -131,11 +135,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default reduxForm({
-    form: "registration",
+    form: "SignUp",
     validate
 })(
     connect(
         mapStateToProps,
         mapDispatchToProps
-    )(withRouter(Registration))
+    )(withRouter(SignUp))
 );
