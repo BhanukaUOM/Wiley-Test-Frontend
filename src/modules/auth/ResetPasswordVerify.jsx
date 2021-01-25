@@ -9,13 +9,12 @@ import CoverImage from '../../components/coverImage/CoverImage';
 
 class ResetPasswordVerify extends Component {
     handleSubmit = (values) => {
-        console.log("handleSubmit", this.props)
         const token = new URLSearchParams(this.props.location.search).get("token");
         const email = new URLSearchParams(this.props.location.search).get("email");
 
         let resetPasswordDto = {
             email: email,
-            token: token,
+            token: parseInt(token),
             password: values && values.password
         }
         this.props.authActions.resetPasswordVerify(resetPasswordDto)
