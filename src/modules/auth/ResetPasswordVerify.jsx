@@ -40,7 +40,7 @@ class ResetPasswordVerify extends Component {
                                     component={InputField}
                                     placeholder="New Password"
                                     aria-describedby="helpId"
-                                    autocomplete="new-password"
+                                    autoComplete="new-password"
                                 />
                                 <br />
                                 <Field
@@ -50,7 +50,7 @@ class ResetPasswordVerify extends Component {
                                     component={InputField}
                                     placeholder="Confirm Password"
                                     aria-describedby="helpId"
-                                    autocomplete="new-password"
+                                    autoComplete="new-password"
                                 />
                             </div>
                             <br />
