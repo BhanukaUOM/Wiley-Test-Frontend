@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
+import { bindActionCreators } from "redux";
 // import "./Login.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
 
 class ForgotPassword extends Component {
-    handleSubmit = () => {
+    handleSubmit = (values) => {
         console.log("handleSubmit", this.props)
-        this.props.history.push("/register")
+        let resetPasswordDto = {
+            email: values.email
+        }
+        this.props.authActions.resetPassword(resetPasswordDto)
+        // this.props.history.push("/register")
     }
     render() {
         const { handleSubmit } = this.props
@@ -17,29 +22,27 @@ class ForgotPassword extends Component {
         return (
             <div className="login-container">
                 <div className="auth-container">
-                    <div className="image">
+                    <div className="auth-image">
                         <h1>Welcome To <span className="auth-span">Wiley</span></h1>
                     </div>
-                    <div className="content">
+                    <div className="auth-content">
                         <h1>Forgot Password</h1>
                         <form
                             onSubmit={handleSubmit(this.handleSubmit)}
                         >
                             <div className="form-group">
-                                <label htmlFor>Email Address</label>
                                 <br />
-                                {/* <input type="text" className="form-control" name id="txt" aria-describedby="helpId" placeholder="UserName" /> */}
                                 <Field
                                     type="text"
-                                    className="form-control"
-                                    name="username"
+                                    className="auth-form-control"
+                                    name="email"
                                     component={InputField}
-                                    placeholder="name@user.com"
+                                    placeholder="your email address"
                                     id="txt" aria-describedby="helpId"
                                 />
                             </div>
 
-                            <Link className="fp" to="/login">Back to Login</Link>
+                            <Link className="auth-fp" to="/login">Back to Login</Link>
                             <br />
                             <button type="button" className="btn auth-button" type="submit">Submit</button>
                         </form>
@@ -52,11 +55,10 @@ class ForgotPassword extends Component {
 
 const validate = values => {
     const errors = {};
-    if (!values.username) {
-        errors.username = "Email is Required";
-    }
-    if (!values.password) {
-        errors.password = "Password is Required";
+    if (!values.email) {
+        errors.email = "Email is Required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = "Invalid email";
     }
     return errors;
 };
@@ -67,13 +69,19 @@ function mapStateToProps(state) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        authActions: bindActionCreators(authActions, dispatch),
+    };
+}
+
 
 export default reduxForm({
     form: "forgotPassword",
-    // validate
+    validate
 })(
     connect(
         mapStateToProps,
-        authActions
+        mapDispatchToProps
     )(withRouter(ForgotPassword))
 );

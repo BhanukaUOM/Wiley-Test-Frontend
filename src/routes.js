@@ -9,7 +9,7 @@ let authUser = false
 const routes = [
   {
     path: "/confirm-account",
-    layout: AuthLayout,
+    layout: DefaultLayout,
     exact: true,
     authUser: authUser,
     component: views.ConfirmAccountView,
@@ -36,12 +36,20 @@ const routes = [
     component: views.RegistrationView,
   },
   {
+    path: "/reset-password-verify",
+    layout: AuthLayout,
+    exact: true,
+    authUser: authUser,
+    component: views.ResetPasswordVerifyView,
+  },
+  {
     path: "/login",
     layout: AuthLayout,
     exact: true,
     authUser: authUser,
     component: views.LoginView,
   },
+
 
 
   //   //should be last one

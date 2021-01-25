@@ -1,7 +1,7 @@
 import React from 'react'
 import Swal from 'sweetalert2'
 import history from '../../_helpers/history'
-
+import { Link } from "react-router-dom"
 const logout = () => {
     // alert("logout")
     Swal.fire({
@@ -27,20 +27,20 @@ const logout = () => {
                 }
                 console.log("DOne")
                 localStorage.removeItem("token");
+                localStorage.removeItem("user");
+
                 history.push("/login")
             })
         }
     })
 }
 
-function Header() {
+function Header({ token }) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ backgroundColor: "red" }}>
+        <nav className="navbar  navbar-dark bg-dark" style={{ backgroundColor: "red" }}>
             <div className="container">
-                <a className="navbar-brand" href="#">Navbar</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" />
-                </button>
+                <Link className="navbar-brand" to="/">Wiley Online Library</Link>
+
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li className="nav-item active">
@@ -56,7 +56,7 @@ function Header() {
 
                 </div>
 
-                <div className="float-right" id="navbarTogglerDemo02">
+                {token && <div className="float-right" id="navbarTogglerDemo02">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li className="nav-item active">
                             <div className="nav-link logout-label" onClick={logout}>Logout </div>
@@ -64,7 +64,7 @@ function Header() {
 
                     </ul>
 
-                </div>
+                </div>}
             </div>
         </nav>
 

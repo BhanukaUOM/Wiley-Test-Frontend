@@ -8,12 +8,27 @@ import { Link, withRouter } from "react-router-dom"
 class ConfirmAccount extends Component {
     componentDidMount() {
         const token = new URLSearchParams(this.props.location.search).get("token");
-        this.props.authActions.confirmAccount(token)
+        if (token) {
+            this.props.authActions.confirmAccount(token)
+        }
     }
     render() {
         return (
-            <div>
-                ConfirmAccount
+            <div style={{ backgroundColor: "#f5f5f5", minHeight: 600 }}>
+                <div id="load">
+                    <div>G</div>
+                    <div>N</div>
+                    <div>I</div>
+                    <div>F</div>
+                    <div>I</div>
+                    <div>R</div>
+                    <div>E</div>
+                    <div>V</div>
+                </div>
+                {/* <div className="container">
+                    ConfirmAccount
+
+                </div> */}
             </div>
         )
     }
@@ -22,7 +37,7 @@ class ConfirmAccount extends Component {
 
 function mapStateToProps(state) {
     return {
-        signUp: state.auth.signUp
+        confirmAccount: state.auth.confirmAccount
     };
 }
 

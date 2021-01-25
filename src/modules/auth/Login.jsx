@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
-import "./Login.css"
+import "./Auth.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
 import { NotificationManager } from "react-notifications";
@@ -12,6 +12,7 @@ export class Login extends Component {
 
   handleSubmit = (values) => {
     let loginDto = {
+
       email: values && values.email,
       password: values && values.password
     }
@@ -25,41 +26,39 @@ export class Login extends Component {
     return (
       <div className="login-container">
         <div className="auth-container">
-          <div className="image">
+          <div className="auth-image">
             <h1>Welcome To <span className="auth-span">Wiley</span></h1>
           </div>
-          <div className="content">
+          <div className="auth-content">
             <h1>Login</h1>
             <form
               onSubmit={handleSubmit(this.handleSubmit)}
             >
               <div className="form-group">
-                <label htmlFor>Email</label>
                 <br />
                 <Field
                   type="text"
-                  className="form-control"
+                  className="auth-form-control"
                   name="email"
                   component={InputField}
-                  placeholder="name@user.com"
+                  placeholder="email"
                   id="txt" aria-describedby="helpId"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor>Password</label>
                 <br />
                 <Field
                   type="password"
-                  className="form-control"
+                  className="auth-form-control"
                   name="password"
                   component={InputField}
                   placeholder="Password"
                   id="txt" aria-describedby="helpId"
                 />
               </div>
-              <Link className="fp" to="/register">Register</Link>
+              <Link className="auth-fp" to="/register">Register</Link>
               <br />
-              <Link className="fp" to="/forgot-password">Forgot Password?</Link>
+              <Link className="auth-fp" to="/forgot-password">Forgot Password?</Link>
               <br />
               <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div class="spinner-border" role="status">
                 <span class="sr-only"></span>
@@ -76,9 +75,14 @@ const validate = values => {
   const errors = {};
   if (!values.email) {
     errors.email = "Email is Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email";
   }
   if (!values.password) {
     errors.password = "Password is Required";
+  }
+  if (values.password && values.password.length < 6) {
+    errors.password = "Password must be at least 6 characters";
   }
   return errors;
 };
@@ -99,7 +103,7 @@ function mapDispatchToProps(dispatch) {
 
 export default reduxForm({
   form: "login",
-  // validate
+  validate
 })(
   connect(
     mapStateToProps,

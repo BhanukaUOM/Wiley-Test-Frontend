@@ -12,6 +12,12 @@ const initialState = {
   },
   confirmAccount: {
     ...initialStateModal
+  },
+  resetPassword: {
+    ...initialStateModal
+  },
+  resetPasswordVerify: {
+    ...initialStateModal,
   }
 };
 
@@ -104,6 +110,69 @@ export default handleActions(
       ...state,
       confirmAccount: {
         ...state.confirmAccount,
+        loading: false,
+        pending: false,
+        hasError: true,
+        error: { payload },
+      },
+    }),
+    //-------------------------------------------------------
+    //---------------------RESET PASSWORD -------------------------------//
+    [types.RESET_PASSWORD]: (state, { payload }) => ({
+      ...state,
+      resetPassword: {
+        ...state.resetPassword,
+        loading: true,
+        pending: true,
+        hasError: false,
+      },
+    }),
+    [types.RESET_PASSWORD_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      resetPassword: {
+        ...state.resetPassword,
+        loading: false,
+        pending: false,
+        data: payload,
+      },
+    }),
+
+    [types.RESET_PASSWORD_FAILED]: (state, { payload }) => ({
+      ...state,
+      resetPassword: {
+        ...state.resetPassword,
+        loading: false,
+        pending: false,
+        hasError: true,
+        error: { payload },
+      },
+    }),
+    //-------------------------------------------------------
+
+    //---------------------RESET PASSWORD -------------------------------//
+    [types.RESET_PASSWORD_VERIFY]: (state, { payload }) => ({
+      ...state,
+      resetPasswordVerify: {
+        ...state.resetPasswordVerify,
+        loading: true,
+        pending: true,
+        hasError: false,
+      },
+    }),
+    [types.RESET_PASSWORD_VERIFY_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      resetPasswordVerify: {
+        ...state.resetPasswordVerify,
+        loading: false,
+        pending: false,
+        data: payload,
+      },
+    }),
+
+    [types.RESET_PASSWORD_VERIFY_FAILED]: (state, { payload }) => ({
+      ...state,
+      resetPasswordVerify: {
+        ...state.resetPasswordVerify,
         loading: false,
         pending: false,
         hasError: true,
