@@ -1,9 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .login-container {
     top: 50%;
     left: 50%;
@@ -20,7 +14,7 @@
     border-radius: 10px;
 }
 
-.image {
+.auth-image {
     flex: 50%;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('http://i.xp.io/HXKwJPw.jpg');
     background-size: cover;
@@ -29,7 +23,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.image h1 {
+.auth-image h1 {
     margin-top: 50%;
     padding-left: 20px;
     padding-right: 20px;
@@ -41,21 +35,21 @@
     color: chartreuse;
 }
 
-.content {
+.auth-content {
     flex: 50%;
     background-color: white;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
 
-.content h1 {
+.auth-content h1 {
     padding: 40px;
     padding-top: 30px;
     font-size: 40px;
     color: #c446c9;
 }
 
-#txt {
+#auth-txt {
     margin: 10px;
     padding: 5px;
     border: none;
@@ -67,23 +61,23 @@
     color: #aa38a4;
 }
 
-label {
+.auth-label {
     font-weight: bold;
     font-size: small;
 }
 
-#txt:focus {
+#auth-txt:focus {
     outline: none;
 }
 
-.fp {
+.auth-fp {
     text-decoration: none;
     font-weight: bold;
     font-size: small;
     transition: 0.3s;
 }
 
-.fp:hover {
+.auth-fp:hover {
     color: #c446c9;
 }
 
@@ -107,4 +101,11 @@ label {
 
 .logout-label:hover{
     cursor: pointer;
+}
+
+.auth-form-control{
+    border: 0;
+    border-bottom: 1px solid red;
+    outline: 0;
+    width: 75%;
 }
