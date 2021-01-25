@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import SignUp from "./auth/SignUp";
 import ResetPasswordVerify from "./auth/ResetPasswordVerify";
 import Dashboard from "./dashboard/Dashboard";
+import NotFoundPage from "../components/notFoundPage/NotFoundPage";
 
 
 export default {
@@ -12,6 +13,8 @@ export default {
     ForgotPasswordView: ForgotPassword,
     DashboardView: Dashboard,
     ConfirmAccountView: ConfirmAccount,
-    ResetPasswordVerifyView: ResetPasswordVerify
+    ResetPasswordVerifyView: ResetPasswordVerify,
+    NotFoundPageView: NotFoundPage
+
 
 }

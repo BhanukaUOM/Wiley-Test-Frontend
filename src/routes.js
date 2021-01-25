@@ -49,14 +49,11 @@ const routes = [
     authUser: authUser,
     component: views.LoginView,
   },
-
-
-
-  //   //should be last one
-  //   {
-  //     layout: DefaultLayout,
-  //     component: Views.PageNotFoundView,
-  //   },
+  //should be last one
+  {
+    layout: DefaultLayout,
+    component: views.NotFoundPageView,
+  },
 ];
 
 export default routes;

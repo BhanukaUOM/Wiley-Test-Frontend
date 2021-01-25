@@ -14,7 +14,7 @@ class ConfirmAccount extends Component {
     }
     render() {
         return (
-            <div style={{ backgroundColor: "#f5f5f5", minHeight: 600 }}>
+            <div style={{ backgroundColor: "#f5f5f5", minHeight: 1000 }}>
                 <div id="load">
                     <div>G</div>
                     <div>N</div>
