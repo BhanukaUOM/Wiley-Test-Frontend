@@ -3,22 +3,19 @@ import { connect } from "react-redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
 import { bindActionCreators } from "redux";
-// import "./Login.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
 import CoverImage from '../../components/coverImage/CoverImage';
 
 class ForgotPassword extends Component {
     handleSubmit = (values) => {
-        console.log("handleSubmit", this.props)
         let resetPasswordDto = {
             email: values.email
         }
         this.props.authActions.resetPassword(resetPasswordDto)
-        // this.props.history.push("/register")
     }
     render() {
-        const { handleSubmit } = this.props
+        const { handleSubmit, resetPassword } = this.props
 
         return (
             <div className="login-container">
@@ -42,14 +39,19 @@ class ForgotPassword extends Component {
 
                                 />
                             </div>
+                            <button type="button" className="btn auth-button" type="submit" disabled={resetPassword.pending}>
+                                {resetPassword.pending ?
+                                    <div className="spinner-border" role="status">
+                                        <span className="sr-only"></span>
+                                    </div> : <span className="btn-text">SUBMIT</span>}</button>
+                        </form>
+                        <br />
 
-                            <br />
-                            <button type="button" className="btn auth-button" type="submit"><span className="btn-text">SUBMIT</span></button>
-
-                            <hr />
+                        <hr />
+                        <div>
                             <Link className="auth-fp" to="/login">Back to Login</Link>
 
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,7 +71,7 @@ const validate = values => {
 
 function mapStateToProps(state) {
     return {
-        ...state
+        resetPassword: state.auth.resetPassword
     };
 }
 

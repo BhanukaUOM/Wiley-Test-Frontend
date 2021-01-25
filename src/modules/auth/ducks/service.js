@@ -26,7 +26,9 @@ const signUp = createLogic({
                 console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 NotificationManager.success(data.message || "Success full sign up..!", "Success");
                 dispatch(actions.signUpSuccess(data));
-                history.push("/login")
+                setTimeout(() => {
+                    history.push("/login")
+                }, 1000);
             })
             .catch((err) => {
                 console.log("~ err", err)
@@ -64,8 +66,12 @@ const login = createLogic({
                 localStorage.setItem("token", JSON.stringify(data.accessToken));
                 localStorage.setItem("user", JSON.stringify(data.user));
                 NotificationManager.success(data.message || "Success full sign up..!", "Success");
+                setTimeout(() => {
+                    history.push("/dashboard")
+                }, 1000);
                 dispatch(actions.loginSuccess(data));
-                history.push("/dashboard")
+
+
             })
             .catch((err) => {
                 console.log("~ err", err)
@@ -142,9 +148,11 @@ const resetPassword = createLogic({
             .then((data) => {
                 console.log("🚀 ~ file: service.js ~ line 25 ~ .then ~ data", data)
                 NotificationManager.success(data.message || "Confirm Account Success", "Success");
-                history.push("/login")
                 dispatch(reset("forgotPassword"));
                 dispatch(actions.resetPasswordSuccess(data));
+                setTimeout(() => {
+                    history.push("/login")
+                }, 1000);
             })
             .catch((err) => {
                 console.log("~ err", err)

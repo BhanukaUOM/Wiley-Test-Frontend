@@ -87,7 +87,7 @@ class SignUp extends Component {
                             <button type="button" className="btn auth-button" type="submit" disabled={signUp.pending}>{signUp.pending ?
                                 <div className="spinner-border" role="status">
                                     <span className="sr-only"></span>
-                                </div> : "SIGN UP"}</button>
+                                </div> : <span className="btn-text">SIGN UP</span>}</button>
 
                             <hr />
                             <Link className="auth-fp" to="/login">Login</Link>

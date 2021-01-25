@@ -42,9 +42,7 @@ class ResetPasswordVerify extends Component {
                                     placeholder="New Password"
                                     aria-describedby="helpId"
                                     autocomplete="new-password"
-
                                 />
-                                <br />
                                 <br />
                                 <Field
                                     type="text"
@@ -56,19 +54,16 @@ class ResetPasswordVerify extends Component {
                                     autocomplete="new-password"
                                 />
                             </div>
-
-
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={resetPasswordVerify.pending}>{resetPasswordVerify.pending ?
                                 <div className="spinner-border" role="status">
                                     <span className="sr-only"></span>
                                 </div> : <span className="btn-text">SUBMIT</span>}</button>
-
-                            <hr />
-                            <div style={{ paddingBottom: 5 }}>
-                                <Link className="auth-fp" to="/login">Back to Login</Link>
-                            </div>
                         </form>
+                        <hr />
+                        <div style={{ paddingBottom: 10 }}>
+                            <Link className="auth-fp" to="/login">Back to Login</Link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,12 +74,12 @@ class ResetPasswordVerify extends Component {
 const validate = values => {
     const errors = {};
     if (!values.password) {
-        errors.password = "Email is Required";
-    } else if (values.password.length < 5) {
-        errors.password = "Password must be 6 charaters";
+        errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+        errors.password = "Password must be at least 6 charaters";
     }
     if (!values.confirmPassword) {
-        errors.confirmPassword = "Confirm Email is Required";
+        errors.confirmPassword = "Confirm Password is Required";
     }
     if (values.password && values.confirmPassword && (values.confirmPassword !== values.password)) {
         errors.confirmPassword = "Password mismatch";

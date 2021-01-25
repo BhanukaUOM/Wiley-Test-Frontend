@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
-import "./Auth.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
 import CoverImage from '../../components/coverImage/CoverImage';
+import "./Auth.css"
 
 export class Login extends Component {
 
@@ -61,14 +61,14 @@ export class Login extends Component {
               <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div className="spinner-border" role="status">
                 <span className="sr-only"></span>
               </div> : <span className="btn-text">LOGIN</span>}</button>
-
-              <hr />
-              <div>
-                <span>Not a member? </span><Link className="auth-fp" to="/sign-up">Sign Up</Link>
-              </div>
-              <Link className="auth-fp" to="/forgot-password">Forgot Password?</Link>
-              <br />
             </form>
+            <hr />
+            <div>
+              <span>Not a member? </span><Link className="auth-fp" to="/sign-up">Sign Up</Link>
+            </div>
+            <div>
+              <Link className="auth-fp" to="/forgot-password">Forgot Password?</Link>
+            </div>
           </div>
         </div>
       </div>
