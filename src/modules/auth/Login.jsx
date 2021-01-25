@@ -12,6 +12,7 @@ export class Login extends Component {
 
   handleSubmit = (values) => {
     let loginDto = {
+
       email: values && values.email,
       password: values && values.password
     }
@@ -34,7 +35,6 @@ export class Login extends Component {
               onSubmit={handleSubmit(this.handleSubmit)}
             >
               <div className="form-group">
-                {/* <label className="auth-label" htmlFor>Email</label> */}
                 <br />
                 <Field
                   type="text"
@@ -46,7 +46,6 @@ export class Login extends Component {
                 />
               </div>
               <div className="form-group">
-                {/* <label className="auth-label" htmlFor>Password</label> */}
                 <br />
                 <Field
                   type="password"
@@ -76,9 +75,14 @@ const validate = values => {
   const errors = {};
   if (!values.email) {
     errors.email = "Email is Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email";
   }
   if (!values.password) {
     errors.password = "Password is Required";
+  }
+  if (values.password && values.password.length < 6) {
+    errors.password = "Password must be at least 6 characters";
   }
   return errors;
 };
@@ -99,7 +103,7 @@ function mapDispatchToProps(dispatch) {
 
 export default reduxForm({
   form: "login",
-  // validate
+  validate
 })(
   connect(
     mapStateToProps,

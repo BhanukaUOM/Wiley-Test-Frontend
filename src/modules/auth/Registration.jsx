@@ -28,45 +28,42 @@ class Registration extends Component {
         return (
             <div className="login-container">
                 <div className="auth-container">
-                    <div className="image">
+                    <div className="auth-image">
                         <h1>Welcome To <span className="auth-span">Wiley</span></h1>
                     </div>
-                    <div className="content">
+                    <div className="auth-content">
                         <h1>Registration</h1>
                         <form
                             onSubmit={handleSubmit(this.handleSubmit)}
                             style={{ margin: 30 }}
                         >
                             <div className="form-group">
-                                <label htmlFor>Name</label>
                                 <br />
                                 <Field
                                     type="text"
-                                    className="form-control"
+                                    className="auth-form-control"
                                     name="name"
                                     component={InputField}
-                                    placeholder="name@user.com"
+                                    placeholder="name"
                                     id="txt" aria-describedby="helpId"
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor>UserName</label>
                                 <br />
                                 <Field
                                     type="text"
-                                    className="form-control"
+                                    className="auth-form-control"
                                     name="email"
                                     component={InputField}
-                                    placeholder="name@user.com"
+                                    placeholder="email"
                                     id="txt" aria-describedby="helpId"
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor>Password</label>
                                 <br />
                                 <Field
                                     type="password"
-                                    className="form-control"
+                                    className="auth-form-control"
                                     name="password"
                                     component={InputField}
                                     placeholder="Password"
@@ -74,19 +71,18 @@ class Registration extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor>Confirm Password</label>
                                 <br />
                                 <Field
                                     type="password"
-                                    className="form-control"
+                                    className="auth-form-control"
                                     name="confirmPassword"
                                     component={InputField}
-                                    placeholder="Password"
+                                    placeholder="Confirm Password"
                                     id="txt" aria-describedby="helpId"
                                 />
                             </div>
 
-                            <Link className="fp" to="/login">Login</Link>
+                            <Link className="auth-fp" to="/login">Login</Link>
                             <br />
                             <button type="button" className="btn auth-button" type="submit" disabled={signUp.pending}>{signUp.pending ?
                                 <div class="spinner-border" role="status">

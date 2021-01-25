@@ -14,4 +14,8 @@ export default {
   confirmAccount: createAction(types.CONFIRM_ACCOUNT),
   confirmAccountSuccess: createAction(types.CONFIRM_ACCOUNT_SUCCESS),
   confirmAccountFail: createAction(types.CONFIRM_ACCOUNT_FAILED),
+
+  resetPassword: createAction(types.RESET_PASSWORD),
+  resetPasswordSuccess: createAction(types.RESET_PASSWORD_SUCCESS),
+  resetPasswordFail: createAction(types.RESET_PASSWORD_FAILED),
 };
