@@ -10,7 +10,7 @@ class Dashboard extends Component {
     componentDidMount() {
         const user = localStorage.getItem("user");
         if (user) {
-            let userObj = JSON.parse(localStorage.user)
+            let userObj = JSON.parse(user)
             this.setState({
                 userObj: userObj
             })

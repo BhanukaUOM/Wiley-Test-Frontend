@@ -39,7 +39,8 @@ class ForgotPassword extends Component {
                                     component={InputField}
                                     placeholder="your email address"
                                     aria-describedby="helpId"
-                                    autoComplete
+                                    autoComplete="on"
+
                                 />
                             </div>
 

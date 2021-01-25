@@ -39,7 +39,8 @@ class SignUp extends Component {
                                     component={InputField}
                                     placeholder="name"
                                     aria-describedby="helpId"
-                                    autoComplete
+                                    autoComplete="on"
+
                                 />
                             </div>
                             <div className="form-group">
@@ -51,7 +52,8 @@ class SignUp extends Component {
                                     component={InputField}
                                     placeholder="email"
                                     aria-describedby="helpId"
-                                    autoComplete
+                                    autoComplete="on"
+
                                 />
                             </div>
                             <div className="form-group">
@@ -63,7 +65,8 @@ class SignUp extends Component {
                                     component={InputField}
                                     placeholder="Password"
                                     aria-describedby="helpId"
-                                    autoComplete
+                                    autoComplete="on"
+
                                 />
                             </div>
                             <div className="form-group">
@@ -75,7 +78,8 @@ class SignUp extends Component {
                                     component={InputField}
                                     placeholder="Confirm Password"
                                     aria-describedby="helpId"
-                                    autoComplete
+                                    autoComplete="on"
+
 
                                 />
                             </div>
