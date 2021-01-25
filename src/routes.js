@@ -9,7 +9,7 @@ let authUser = false
 const routes = [
   {
     path: "/confirm-account",
-    layout: AuthLayout,
+    layout: DefaultLayout,
     exact: true,
     authUser: authUser,
     component: views.ConfirmAccountView,

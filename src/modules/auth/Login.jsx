@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
-import "./Login.css"
+import "./Auth.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
 import { NotificationManager } from "react-notifications";

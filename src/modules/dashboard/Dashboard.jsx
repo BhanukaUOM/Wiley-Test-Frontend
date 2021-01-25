@@ -8,20 +8,18 @@ class Dashboard extends Component {
         }
     }
     componentDidMount() {
-        let user = localStorage.user
-        let userObj = JSON.parse(localStorage.user)
-
-        console.log("componentDidMount ~ user", user)
-        console.log("componentDidMount ~ userObj", userObj)
-        this.setState({
-            userObj: userObj
-        })
-
+        const user = localStorage.getItem("user");
+        if (user) {
+            let userObj = JSON.parse(localStorage.user)
+            this.setState({
+                userObj: userObj
+            })
+        }
     }
     render() {
         const { userObj } = this.state
         return (
-            <div className="container" style={{ minHeight: 1000 }}>
+            <div className="container" style={{ minHeight: 1000, marginTop: 10 }}>
                 <div style={{ paddingTop: 20, backgroundColor: "#f5f5f5" }}>
                     {`Hi... ${userObj && userObj.name}`}
 
