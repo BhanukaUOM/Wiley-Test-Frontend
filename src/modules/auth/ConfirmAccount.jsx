@@ -25,10 +25,6 @@ class ConfirmAccount extends Component {
                     <div>E</div>
                     <div>V</div>
                 </div>
-                {/* <div className="container">
-                    ConfirmAccount
-
-                </div> */}
             </div>
         )
     }
