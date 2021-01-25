@@ -16,7 +16,7 @@ const App = () => (
           />
         ))}
       </Switch>
-      <Redirect from="/" to="/login" />
+      {/* <Redirect from="/" to="/login" /> */}
     </Router>
   </div>
 );

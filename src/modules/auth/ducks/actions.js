@@ -18,4 +18,8 @@ export default {
   resetPassword: createAction(types.RESET_PASSWORD),
   resetPasswordSuccess: createAction(types.RESET_PASSWORD_SUCCESS),
   resetPasswordFail: createAction(types.RESET_PASSWORD_FAILED),
+
+  resetPasswordVerify: createAction(types.RESET_PASSWORD_VERIFY),
+  resetPasswordVerifySuccess: createAction(types.RESET_PASSWORD_VERIFY_SUCCESS),
+  resetPasswordVerifyFail: createAction(types.RESET_PASSWORD_VERIFY_FAILED),
 };

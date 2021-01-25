@@ -28,19 +28,19 @@ export const setAuth = async () => {
             // debugger
             console.log("🚀 ~ file: HTTPClient.js ~ line 100 ~ setAuth ~ error", error)
             console.log("HTTPClient error", error.response)
-            if (
-                error.response && error.response.status !== undefined &&
-                error.response.status === 401
-            ) {
-                NotificationManager.error("Please log again", "Unauthorized");
+            // if (
+            //     error.response && error.response.status !== undefined &&
+            //     error.response.status === 401
+            // ) {
+            //     NotificationManager.error("Please log again", "Unauthorized");
 
-                localStorage.clear();
-                clearHTTPClient()
-                window.location = "/login";
-            }
-            else {
-                return Promise.reject(error);
-            }
+            //     localStorage.clear();
+            //     clearHTTPClient()
+            //     window.location = "/login";
+            // }
+            // else {
+            return Promise.reject(error);
+            // }
         }
     );
 };
