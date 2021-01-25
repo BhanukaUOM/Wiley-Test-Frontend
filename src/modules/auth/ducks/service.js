@@ -172,8 +172,12 @@ const resetPasswordVerify = createLogic({
             .then((resp) => resp.data)
             .then((data) => {
                 NotificationManager.success(data.message || "Confirm Account Success", "Success");
-                dispatch(reset("forgotPassword"));
+                dispatch(reset("resetPasswordVerify"));
                 dispatch(actions.resetPasswordVerifySuccess(data));
+                setTimeout(() => {
+                    history.push("/login")
+                }, 1500);
+
             })
             .catch((err) => {
                 let error = err && err.response && err.response.data
