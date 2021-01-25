@@ -49,6 +49,13 @@ const routes = [
     authUser: authUser,
     component: views.LoginView,
   },
+  {
+    path: "/",
+    layout: AuthLayout,
+    exact: true,
+    authUser: authUser,
+    component: views.HomeView,
+  },
   //should be last one
   {
     layout: DefaultLayout,
