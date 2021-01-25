@@ -35,7 +35,7 @@ class ResetPasswordVerify extends Component {
                             <div className="form-group">
                                 <br />
                                 <Field
-                                    type="text"
+                                    type="password"
                                     className="auth-form-control"
                                     name="password"
                                     component={InputField}
@@ -45,7 +45,7 @@ class ResetPasswordVerify extends Component {
                                 />
                                 <br />
                                 <Field
-                                    type="text"
+                                    type="password"
                                     className="auth-form-control"
                                     name="confirmPassword"
                                     component={InputField}

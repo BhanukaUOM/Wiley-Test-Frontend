@@ -14,12 +14,12 @@ function Footer() {
                     <div className="col-xs-6 col-md-3">
                         <h6>Categories</h6>
                         <ul className="footer-links">
-                            <li><a href="#">C</a></li>
-                            <li><a href="#">UI Design</a></li>
-                            <li><a href="#">PHP</a></li>
-                            <li><a href="#">Java</a></li>
-                            <li><a href="#">Android</a></li>
-                            <li><a href="#">Templates</a></li>
+                            <li><a href="#">Action and Adventure</a></li>
+                            <li><a href="#">Classics</a></li>
+                            <li><a href="#">Comic</a></li>
+                            <li><a href="#">Fantasy</a></li>
+                            <li><a href="#">Historical Fiction</a></li>
+                            <li><a href="#">Horror</a></li>
                         </ul>
                     </div>
                     <div className="col-xs-6 col-md-3">
