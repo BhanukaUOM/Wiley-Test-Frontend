@@ -15,7 +15,7 @@ const DashboardLayout = (ViewComponent) => {
         componentDidMount() {
             const token = localStorage.getItem("token");
             if (!token)
-                history.push("/sign-in")
+                history.push("/login")
             this.setState({
                 token: token
             })

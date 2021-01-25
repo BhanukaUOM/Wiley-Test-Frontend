@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 // import "./Login.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
+import CoverImage from '../../components/coverImage/CoverImage';
 
 class ForgotPassword extends Component {
     handleSubmit = (values) => {
@@ -22,9 +23,7 @@ class ForgotPassword extends Component {
         return (
             <div className="login-container">
                 <div className="auth-container">
-                    <div className="auth-image">
-                        <h1>Welcome To <span className="auth-span">Wiley</span></h1>
-                    </div>
+                    <CoverImage />
                     <div className="auth-content">
                         <h1>Forgot Password</h1>
                         <form
@@ -37,7 +36,7 @@ class ForgotPassword extends Component {
                                     className="auth-form-control"
                                     name="email"
                                     component={InputField}
-                                    placeholder="your email address"
+                                    placeholder="Your email address"
                                     aria-describedby="helpId"
                                     autoComplete="on"
 
@@ -45,7 +44,7 @@ class ForgotPassword extends Component {
                             </div>
 
                             <br />
-                            <button type="button" className="btn auth-button" type="submit">Submit</button>
+                            <button type="button" className="btn auth-button" type="submit"><span className="btn-text">SUBMIT</span></button>
 
                             <hr />
                             <Link className="auth-fp" to="/login">Back to Login</Link>

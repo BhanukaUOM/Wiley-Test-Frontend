@@ -6,8 +6,9 @@ import { Field, reduxForm } from "redux-form";
 import "./Auth.css"
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
+import CoverImage from '../../components/coverImage/CoverImage';
 
-export class SignIn extends Component {
+export class Login extends Component {
 
   handleSubmit = (values) => {
     let loginDto = {
@@ -23,9 +24,7 @@ export class SignIn extends Component {
     return (
       <div className="login-container">
         <div className="auth-container">
-          <div className="auth-image">
-            <h1>Welcome to <span className="auth-span">Wiley</span></h1>
-          </div>
+          <CoverImage />
           <div className="auth-content">
             <h1>Login</h1>
             <form
@@ -61,13 +60,12 @@ export class SignIn extends Component {
 
               <button type="button" className="btn auth-button" type="submit" disabled={login.pending}>{login.pending ? <div className="spinner-border" role="status">
                 <span className="sr-only"></span>
-              </div> : "LOGIN"}</button>
+              </div> : <span className="btn-text">LOGIN</span>}</button>
 
               <hr />
               <div>
                 <span>Not a member? </span><Link className="auth-fp" to="/sign-up">Sign Up</Link>
               </div>
-              <br />
               <Link className="auth-fp" to="/forgot-password">Forgot Password?</Link>
               <br />
             </form>
@@ -109,11 +107,11 @@ function mapDispatchToProps(dispatch) {
 
 
 export default reduxForm({
-  form: "SignIn",
+  form: "Login",
   validate
 })(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withRouter(SignIn))
+  )(withRouter(Login))
 );

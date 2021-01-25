@@ -5,6 +5,7 @@ import { authActions } from "./ducks";
 import { Field, reduxForm } from "redux-form";
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
+import CoverImage from '../../components/coverImage/CoverImage';
 
 class SignUp extends Component {
 
@@ -21,9 +22,7 @@ class SignUp extends Component {
         return (
             <div className="login-container" >
                 <div className="auth-container">
-                    <div className="auth-image">
-                        <h1>Welcome To <span className="auth-span">Wiley</span></h1>
-                    </div>
+                    <CoverImage />
                     <div className="auth-content">
                         <h1>Sign Up</h1>
                         <form
@@ -91,7 +90,7 @@ class SignUp extends Component {
                                 </div> : "SIGN UP"}</button>
 
                             <hr />
-                            <Link className="auth-fp" to="/sign-in">Sign In</Link>
+                            <Link className="auth-fp" to="/login">Login</Link>
 
                         </form>
                     </div>

@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import { bindActionCreators } from "redux";
 import { InputField } from '../../components/controls/Fields';
 import { Link, withRouter } from "react-router-dom"
+import CoverImage from '../../components/coverImage/CoverImage';
 
 class ResetPasswordVerify extends Component {
     handleSubmit = (values) => {
@@ -25,9 +26,7 @@ class ResetPasswordVerify extends Component {
         return (
             <div className="login-container">
                 <div className="auth-container">
-                    <div className="auth-image">
-                        <h1>Welcome To <span className="auth-span">Wiley</span></h1>
-                    </div>
+                    <CoverImage />
                     <div className="auth-content">
                         <h1>Reset Password</h1>
                         <form
@@ -63,10 +62,12 @@ class ResetPasswordVerify extends Component {
                             <button type="button" className="btn auth-button" type="submit" disabled={resetPasswordVerify.pending}>{resetPasswordVerify.pending ?
                                 <div className="spinner-border" role="status">
                                     <span className="sr-only"></span>
-                                </div> : "Submit"}</button>
+                                </div> : <span className="btn-text">SUBMIT</span>}</button>
 
                             <hr />
-                            <Link className="auth-fp" to="/login">Back to Login</Link>
+                            <div style={{ paddingBottom: 5 }}>
+                                <Link className="auth-fp" to="/login">Back to Login</Link>
+                            </div>
                         </form>
                     </div>
                 </div>
