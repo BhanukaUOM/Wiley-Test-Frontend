@@ -59,7 +59,7 @@ Simple Login/Registration page for Wiley Online Library.
       ```
       $ npm run deploy
       ```
-   - Endpoint: `https://d2mb2kzywhsi1v.cloudfront.net`
+   
 
 <a name="technologies"></a>
 
